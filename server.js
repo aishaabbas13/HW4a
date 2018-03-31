@@ -196,7 +196,7 @@ router.route('/reviews').post(authJwtController.isAuthenticated, function (req, 
         }
     });
 });
-router.route('/reviews/viewall')
+router.route('/reviews')
     .get(authJwtController.isAuthenticated, function (req, res) {
         if (req.query.reviews === 'true')
         {
