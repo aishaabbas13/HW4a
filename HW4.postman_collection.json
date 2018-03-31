@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "1e499595-cb9d-4db4-a078-cedff4b0241b",
+		"name": "HW4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HW4 TEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7597d3c-31fb-42d9-93ae-b8b9f23a1e8a",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var jwt = jsonData.token;",
+							"pm.environment.set(\"JWT\", jwt);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jape",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "Kim321",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/signin",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HW4 PostReview",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"MovieTitle\": \"8\",\r\n\t\"ReviewerName\": \"Ayesha\",\r\n\t\"smallQuote\": \"Pretty cool\",\r\n\t\"rating\": 5\r\n}\t\r\n"
+				},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/reviews",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HW4 Get all Reviews",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/reviews/?reviews=true ",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reviews",
+						""
+					],
+					"query": [
+						{
+							"key": "reviews",
+							"value": "true "
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HW4 Get a review",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/reviews/1?reviews=true ",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reviews",
+						"1"
+					],
+					"query": [
+						{
+							"key": "reviews",
+							"value": "true "
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
