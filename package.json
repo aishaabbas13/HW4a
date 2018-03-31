@@ -1,0 +1,26 @@
+{
+  "name": "week7a",
+  "version": "1.0.0",
+  "description": "week7a",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shawn McCarthy",
+  "license": "ISC",
+  "dependencies": {
+    "asy": "0.0.6",
+    "async": "^2.6.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.0",
+    "l-rm-modules": "^1.0.9",
+    "mongoose": "^5.0.12",
+    "nodemon": "^1.17.2",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "passport-jwt": "^3.0.1"
+  }
+}
