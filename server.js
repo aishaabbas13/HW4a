@@ -1,4 +1,5 @@
 var express = require('express');
+var cors = require('cors');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var authJwtController = require('./auth_jwt');
@@ -22,6 +23,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(cors());
 
 var router = express.Router();
 
@@ -196,7 +198,7 @@ router.route('/reviews').post(authJwtController.isAuthenticated, function (req, 
         }
     });
 });
-router.route('/reviews/viewall')
+router.route('/reviews')
     .get(authJwtController.isAuthenticated, function (req, res) {
         if (req.query.reviews === 'true')
         {
