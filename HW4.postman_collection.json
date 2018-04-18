@@ -1,0 +1,550 @@
+{
+	"info": {
+		"_postman_id": "1e499595-cb9d-4db4-a078-cedff4b0241b",
+		"name": "HW4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HW4 TEST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7597d3c-31fb-42d9-93ae-b8b9f23a1e8a",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var jwt = jsonData.token;",
+							"pm.environment.set(\"JWT\", jwt);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jape",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "Kim321",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/signin",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "482aa0d2-283b-4c1b-a4a4-c5daeab9ef63",
+					"name": "HW4 TEST",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Jape",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "Kim321",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://web-api-hw4-koo.herokuapp.com/signin",
+							"protocol": "https",
+							"host": [
+								"web-api-hw4-koo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "206",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Mar 2018 08:39:05 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"ce-G28RgeglAs31CwBGvV+QoKtL94E\"",
+							"name": "Etag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "Server",
+							"value": "Cowboy",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"success\":true,\"token\":\"JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhYmVjYTM5NjA4NzM1MGY4YzgzOTg3OCIsInVzZXJuYW1lIjoiS2ltMzIxIiwiaWF0IjoxNTIyNDg1NTQ1fQ.9InC9KqSxBaezp-ODQd0VwMqvRBEfpSDZEz1ZQlNoYQ\"}"
+				}
+			]
+		},
+		{
+			"name": "HW4 PostReview",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"MovieTitle\": \"8\",\r\n\t\"ReviewerName\": \"Ayesha\",\r\n\t\"smallQuote\": \"Pretty cool\",\r\n\t\"rating\": 5\r\n}\t\r\n"
+				},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/reviews",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reviews"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "c6edfe4b-c1c4-481d-8315-cee2793bd3af",
+					"name": "HW4 PostReview",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"disabled": false
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n\t\"MovieTitle\": \"8\",\r\n\t\"ReviewerName\": \"Ayesha\",\r\n\t\"smallQuote\": \"Pretty cool\",\r\n\t\"rating\": 5\r\n}\t\r\n"
+						},
+						"url": {
+							"raw": "https://web-api-hw4-koo.herokuapp.com/reviews",
+							"protocol": "https",
+							"host": [
+								"web-api-hw4-koo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Mar 2018 08:39:28 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"1d-NPVCdZiqxue5AQ10uAo+GlhetlY\"",
+							"name": "Etag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "Server",
+							"value": "Cowboy",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"message\":\"Review created!\"}"
+				}
+			]
+		},
+		{
+			"name": "HW4 Get all Reviews",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/reviews/?reviews=true ",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reviews",
+						""
+					],
+					"query": [
+						{
+							"key": "reviews",
+							"value": "true "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "09a9ccb3-b5f3-4a03-80e1-a88cde5b5f69",
+					"name": "HW4 Get all Reviews",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"disabled": false
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://web-api-hw4-koo.herokuapp.com/reviews/?reviews=true ",
+							"protocol": "https",
+							"host": [
+								"web-api-hw4-koo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"reviews",
+								""
+							],
+							"query": [
+								{
+									"key": "reviews",
+									"value": "true "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4058",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Mar 2018 08:49:47 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"fda-CIA3xqkAxLVMjWqVyaN7giKd//4\"",
+							"name": "Etag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "Server",
+							"value": "Cowboy",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"_id\":\"5abecf896087350f8c83987d\",\"Actors\":[{\"_id\":\"5abecf896087350f8c839880\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf896087350f8c83987f\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf896087350f8c83987e\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"5\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3eeb8637d11cdcd17332\",\"MovieTitle\":\"5\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecf906087350f8c839881\",\"Actors\":[{\"_id\":\"5abecf906087350f8c839884\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf906087350f8c839883\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf906087350f8c839882\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"1\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf0c760226f94048f28149\",\"MovieTitle\":\"1\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"It's good friday\",\"rating\":2,\"__v\":0},{\"_id\":\"5abf36b5cf095234c8c8acfb\",\"MovieTitle\":\"1\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecf946087350f8c839885\",\"Actors\":[{\"_id\":\"5abecf946087350f8c839888\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf946087350f8c839887\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf946087350f8c839886\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"2\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3ee28637d11cdcd1732f\",\"MovieTitle\":\"2\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecf986087350f8c839889\",\"Actors\":[{\"_id\":\"5abecf986087350f8c83988c\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf986087350f8c83988b\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf986087350f8c83988a\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"3\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3ee58637d11cdcd17330\",\"MovieTitle\":\"3\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecf9b6087350f8c83988d\",\"Actors\":[{\"_id\":\"5abecf9b6087350f8c839890\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf9b6087350f8c83988f\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf9b6087350f8c83988e\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"4\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3ee98637d11cdcd17331\",\"MovieTitle\":\"4\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecf9f6087350f8c839891\",\"Actors\":[{\"_id\":\"5abecf9f6087350f8c839894\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf9f6087350f8c839893\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf9f6087350f8c839892\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"6\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3eef8637d11cdcd17333\",\"MovieTitle\":\"6\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecfa46087350f8c839895\",\"Actors\":[{\"_id\":\"5abecfa46087350f8c839898\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecfa46087350f8c839897\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecfa46087350f8c839896\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"7\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3ef28637d11cdcd17334\",\"MovieTitle\":\"7\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]},{\"_id\":\"5abecfa76087350f8c839899\",\"Actors\":[{\"_id\":\"5abecfa76087350f8c83989c\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecfa76087350f8c83989b\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecfa76087350f8c83989a\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"8\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf3ef58637d11cdcd17335\",\"MovieTitle\":\"8\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0},{\"_id\":\"5abf494063d83f0004786dd9\",\"MovieTitle\":\"8\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]}]"
+				}
+			]
+		},
+		{
+			"name": "HW4 Get a review",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{JWT}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://web-api-hw4-koo.herokuapp.com/reviews/1?reviews=true ",
+					"protocol": "https",
+					"host": [
+						"web-api-hw4-koo",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"reviews",
+						"1"
+					],
+					"query": [
+						{
+							"key": "reviews",
+							"value": "true "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "0ac09025-2299-4c35-8214-b31c425334c7",
+					"name": "HW4 Get a review",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{JWT}}",
+								"disabled": false
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://web-api-hw4-koo.herokuapp.com/reviews/1?reviews=true ",
+							"protocol": "https",
+							"host": [
+								"web-api-hw4-koo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"reviews",
+								"1"
+							],
+							"query": [
+								{
+									"key": "reviews",
+									"value": "true "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "604",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 31 Mar 2018 08:49:56 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"25c-M+DpMywoxXRWdLy+lLSagA24uc4\"",
+							"name": "Etag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "Server",
+							"value": "Cowboy",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"_id\":\"5abecf906087350f8c839881\",\"Actors\":[{\"_id\":\"5abecf906087350f8c839884\",\"actorName\":\"Actor1\",\"characterName\":\"Char1\"},{\"_id\":\"5abecf906087350f8c839883\",\"actorName\":\"Actor2\",\"characterName\":\"Char2\"},{\"_id\":\"5abecf906087350f8c839882\",\"actorName\":\"Actor3\",\"characterName\":\"Char3\"}],\"Title\":\"1\",\"releaseYear\":2018,\"Genre\":\"Action\",\"__v\":0,\"Reviews\":[{\"_id\":\"5abf0c760226f94048f28149\",\"MovieTitle\":\"1\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"It's good friday\",\"rating\":2,\"__v\":0},{\"_id\":\"5abf36b5cf095234c8c8acfb\",\"MovieTitle\":\"1\",\"ReviewerName\":\"Ayesha\",\"smallQuote\":\"Pretty cool\",\"rating\":5,\"__v\":0}]}]"
+				}
+			]
+		}
+	]
+}
